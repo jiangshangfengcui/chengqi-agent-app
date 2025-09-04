@@ -1,0 +1,40 @@
+{
+  "name": "chengqi-agent-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "mastra dev",
+    "build": "mastra build",
+    "start": "mastra start",
+    "build:worker": "npm run build && node scripts/prepare-worker.js",
+    "deploy": "npm run build:worker && wrangler deploy",
+    "deploy:dev": "npm run build:worker && wrangler deploy --env development",
+    "preview": "wrangler dev",
+    "deploy:setup": "node scripts/deploy-setup.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "dependencies": {
+    "@ai-sdk/deepseek": "^1.0.14",
+    "@ai-sdk/openai": "^1.3.24",
+    "@mastra/core": "^0.15.2",
+    "@mastra/libsql": "^0.13.7",
+    "@mastra/loggers": "^0.10.9",
+    "@mastra/memory": "^0.14.2",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "chalk": "^5.6.0",
+    "mastra": "^0.11.2",
+    "typescript": "^5.9.2",
+    "wrangler": "^4.33.2"
+  }
+}
