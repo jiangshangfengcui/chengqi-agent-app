@@ -24,8 +24,8 @@ export const weatherAgent = new Agent({
   tools: { weatherTool },
   memory: new Memory({
     storage: new LibSQLStore({
-      // 在 Cloudflare Workers 中使用内存存储
-      url: typeof globalThis.caches !== 'undefined' ? ':memory:' : 'file:../mastra.db',
+      // 在 Cloudflare Workers 环境中使用内存存储
+      url: ':memory:',
     }),
   }),
 });

@@ -14,7 +14,7 @@ export const mastra = new Mastra({
   agents: { weatherAgent, codeReviewAgent },
   storage: new LibSQLStore({
     // Cloudflare Workers 使用内存存储，或者可以配置 D1 数据库
-    url: isCloudflareWorkers ? ":memory:" : "file:../mastra.db",
+    url: ":memory:",
   }),
   logger: new PinoLogger({
     name: 'Mastra',

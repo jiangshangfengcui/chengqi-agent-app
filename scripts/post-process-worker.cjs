@@ -1,4 +1,22 @@
-// Cloudflare Workers Entry Point
+#!/usr/bin/env node
+
+const fs = require('fs');
+const path = require('path');
+
+console.log('🔧 Creating Cloudflare Workers compatible entry point...');
+
+try {
+  // Read the original Mastra output to see what we have available
+  const mastraOutputPath = '.mastra/output/index.mjs';
+  
+  // Check if Mastra output exists
+  if (!fs.existsSync(mastraOutputPath)) {
+    throw new Error('Mastra build output not found. Please run "npm run build" first.');
+  }
+
+  // Create a completely standalone Workers-compatible entry point
+  // This avoids importing any Mastra code that might cause database issues
+  const workerContent = `// Cloudflare Workers Entry Point
 // Standalone version to avoid Mastra/LibSQL compatibility issues
 
 export default {
@@ -76,4 +94,15 @@ export default {
       });
     }
   },
-};
+};`;
+
+  fs.writeFileSync('worker.js', workerContent);
+  console.log('✅ Standalone Cloudflare Workers entry point created successfully!');
+  console.log('📄 File: worker.js');
+  console.log('🚀 This provides basic API functionality without Mastra dependencies');
+  console.log('💡 Next steps: Configure Mastra for full Workers compatibility');
+  
+} catch (error) {
+  console.error('❌ Error creating worker file:', error.message);
+  process.exit(1);
+}

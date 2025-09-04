@@ -49,7 +49,7 @@ export const codeReviewAgent = new Agent({
   memory: new Memory({
     storage: new LibSQLStore({
       // 在 Cloudflare Workers 中使用内存存储
-      url: typeof globalThis.caches !== 'undefined' ? ':memory:' : 'file:../mastra.db',
+      url: ':memory:',
     }),
   }),
 });
