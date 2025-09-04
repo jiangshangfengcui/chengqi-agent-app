@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Bash(yarn deploy)",
-      "Bash(yarn deploy:*)"
+      "Bash(yarn deploy:*)",
+      "Bash(npm run build:*)",
+      "Bash(wrangler dev:*)",
+      "Bash(npx wrangler dev:*)",
+      "Bash(curl:*)",
+      "Bash(npx wrangler:*)",
+      "Read(/Users/wola/Library/Preferences/.wrangler/logs/**)"
     ],
     "deny": [],
     "ask": []

@@ -1,5 +1,5 @@
 name = "chengqi-agent-app"
-main = "worker.js"
+main = "worker-fixed.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
@@ -19,9 +19,9 @@ MASTRA_DEFAULT_STORAGE_URL = ":memory:"
 # binding = "CACHE"
 # id = "your-kv-id"
 
-# 构建配置
-[build]
-command = "npm run build && node scripts/post-process-worker.cjs"
+# 移除构建配置，避免覆盖我们的worker文件
+# [build]
+# command = "npm run build && node scripts/post-process-worker.cjs"
 
 # 开发环境配置
 [env.development]
